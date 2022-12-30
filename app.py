@@ -19,14 +19,15 @@ app = Flask(__name__)
 def root():
     #製作當日台股加權指數圖
     today=datetime.date.today()
-    today=today.strftime("%Y-%m-%d")#當天的變數轉成str
+    today=today.strftime("%Y-%m-%d")#當天的日期變數轉成str
+
     url = "https://api.finmindtrade.com/api/v4/data"
     parameter = {
         "dataset": "TaiwanVariousIndicators5Seconds",
-        "start_date": "2022-12-30",#新的dataset太大,不好畫圖,之後修正
+        "start_date": "2022-12-30",#可使用變數today,但若為假日則沒資料會出錯,先放平日
         "token": "", # 參考登入，獲取金鑰
     }
-    
+    #新的dataset太大,不好畫圖,之後修正 
     data = requests.get(url, params=parameter)
     data = data.json()
     data = pd.DataFrame(data['data'])
