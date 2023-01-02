@@ -665,6 +665,7 @@ class Stocker():
             plt.title('Predicted versus Buy and Hold Profits')
             plt.legend(loc = 2, prop={'size': 10})
             plt.grid(alpha=0.2); 
+            plt.savefig('D:\\Desktop\\NCHU_IOT-main\\Stock_final\\static\img\\evaluation_'+ chart_name +'.png') 
             #plt.show()
         
     def retrieve_google_trends(self, search, date_range):
